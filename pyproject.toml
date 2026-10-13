@@ -1,0 +1,28 @@
+[project]
+name = "mdns-advertiser"
+version = "0.1.0"
+description = "Advertise a service over mDNS — and contain an LGPL dependency so nothing else has to"
+requires-python = ">=3.12"
+dependencies = [
+    # **The reason this project exists as its own repository.** `zeroconf`
+    # is LGPL-2.1-or-later. Keeping it here, behind a container boundary and
+    # outside any product's dependency tree, is what lets those products
+    # assert "no copyleft anywhere" as a property CI can enforce rather than
+    # a claim someone re-checks by hand.
+    "zeroconf>=0.132",
+    "pydantic-settings>=2.5",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mdns_advertiser"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"

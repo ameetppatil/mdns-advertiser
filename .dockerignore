@@ -1,0 +1,12 @@
+# The image builds its own environment; a host venv would carry
+# host-platform wheels. Same lesson as the sibling api/.dockerignore, which
+# was written after a build came out 40x larger than claimed.
+.venv/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+**/__pycache__/
+*.pyc
+.git/
+.DS_Store
+._*
