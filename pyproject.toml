@@ -3,12 +3,24 @@ name = "mdns-advertiser"
 version = "0.1.0"
 description = "Advertise a service over mDNS — and contain an LGPL dependency so nothing else has to"
 requires-python = ">=3.12"
+# **LGPL-2.1-or-later: the same licence as `zeroconf`, deliberately.**
+# This project is a thin wrapper around a copyleft library. Licensing the
+# wrapper under those same terms means there is no "is this a derivative
+# work?" question to argue, and no version-compatibility question either —
+# the answer is simply yes, and the terms are identical.
+license = "LGPL-2.1-or-later"
+license-files = ["LICENSE"]
+authors = [{ name = "Ameet Patil", email = "cromozo@outlook.com" }]
 dependencies = [
     # **The reason this project exists as its own repository.** `zeroconf`
     # is LGPL-2.1-or-later. Keeping it here, behind a container boundary and
     # outside any product's dependency tree, is what lets those products
     # assert "no copyleft anywhere" as a property CI can enforce rather than
     # a claim someone re-checks by hand.
+    #
+    # That boundary is what carries the argument, and it does so whether
+    # this wrapper is proprietary or copyleft. Making it copyleft only
+    # removes a question nobody needed to be asked.
     "zeroconf>=0.132",
     "pydantic-settings>=2.5",
 ]

@@ -65,8 +65,20 @@ docker build -t mdns-advertiser:0.1.0 .
 
 ## Licence
 
-This project's own code is proprietary (Cromozo Ltd). It *uses* LGPL-2.1
-`zeroconf` without being a derivative work of it, which the LGPL expressly
-permits — see `docs/licensing.md` for how each obligation is met. It is
-trivial enough to open-source if that is ever useful; nothing here depends
-on it staying closed.
+Copyright © 2026 Ameet Patil &lt;cromozo@outlook.com&gt;.
+**LGPL-2.1-or-later** — see [`LICENSE`](LICENSE).
+
+That is the same licence as `zeroconf`, the library this project exists to
+wrap, and matching it is the point: a copyleft wrapper around a copyleft
+library raises no "is this a derivative work?" question, so there is nothing
+to argue about and no version-compatibility question either.
+
+**This does not weaken the isolation it was built for.** Consumers stay free
+of copyleft because this runs as its own container, reached over the
+network — a separate program, not a linked library. That boundary is what
+carries the argument, and it carries it regardless of how this side is
+licensed. See [`docs/licensing.md`](docs/licensing.md).
+
+Every dependency's licence text is written into the built image under
+`/usr/share/licenses/` by the build itself, so the inventory comes from the
+artifact rather than from a list someone maintains.

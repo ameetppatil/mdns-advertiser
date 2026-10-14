@@ -27,7 +27,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
 RUN pip install --no-cache-dir uv
 
 WORKDIR /app
-COPY pyproject.toml README.md ./
+# LICENSE is not optional here: `pyproject.toml` declares it via
+# `license-files`, so the build fails outright without it rather than
+# quietly producing a wheel with no notice.
+COPY pyproject.toml README.md LICENSE ./
 COPY src ./src
 RUN uv pip install --system --no-cache .
 
